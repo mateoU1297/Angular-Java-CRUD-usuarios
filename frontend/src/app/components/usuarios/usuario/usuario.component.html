@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <!-- <app-usuario-formulario 
+    *ngIf="showForm"
+    [id]="id"
+    [accion]="accion"
+    ></app-usuario-formulario> -->
+  <div class="card card-primary card-outline">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-6">
+          <button
+            type="button"
+            class="btn btn-primary"
+            routerLink="/agregar-usuario"
+          >
+            <i class="fa fa-plus"></i> Crear
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <table
+        id="dtProductos"
+        class="mt-2 table table-bordered table-striped table-responsive"
+      >
+        <thead>
+          <tr>
+            <th>Opciones</th>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Genero</th>
+            <th>Edad</th>
+            <th>Teléfono</th>
+            <th>EPS</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <i class="fas fa-pencil-alt text-primary"></i>
+              <i class="fas fa-trash text-danger"></i>
+            </td>
+            <td>Prueba</td>
+            <td>Prueba</td>
+            <td>Prueba</td>
+            <td>Prueba</td>
+            <td>Prueba</td>
+            <td>Prueba</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
