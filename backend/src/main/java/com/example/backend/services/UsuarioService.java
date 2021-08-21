@@ -19,7 +19,7 @@ public class UsuarioService {
         return this.usuarioRepository.save(usuario);
     }
 
-    public boolean deleteUsuario(Long id) {
+    public boolean deleteUsuario(Long id){
         try{
             this.usuarioRepository.deleteById(id);
             return true;
@@ -27,4 +27,8 @@ public class UsuarioService {
             return false;
         }
     }
+
+    // public Iterable<UsuarioModel> findByName(String nombre){
+    //     return this.usuarioRepository.findByName(nombre);
+    // }
 }

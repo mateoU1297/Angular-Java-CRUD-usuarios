@@ -34,4 +34,9 @@ public class UsuarioController {
     public boolean deleteUsuario(@PathVariable("id") Long id){
         return this.usuarioService.deleteUsuario(id);
     }
+
+    // @GetMapping( path = "find-by-name/{nombre}")
+    // public Iterable<UsuarioModel> findByName(@PathVariable("nombre") String nombre){
+    //     return this.usuarioService.findByName(nombre);
+    // }
 }
