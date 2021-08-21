@@ -15,4 +15,8 @@ export class UsuarioService {
   getUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.myAppUrl}`);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.myAppUrl}/delete/${id}`);
+  }
 }
