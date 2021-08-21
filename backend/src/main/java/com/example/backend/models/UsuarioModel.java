@@ -10,9 +10,19 @@ public class UsuarioModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(unique = true, nullable = false)
     private Long id;
+    
+    @Column(unique = true, nullable = false)
     private String nombre;
+
+    @Column(nullable = false)
     private Boolean activo;
-    private Integer id_rol;
+
+    @Column(name="id_rol", nullable = false)
+    private Integer idRol;
+
+    @OneToOne()
+    @JoinColumn(name="id_rol", referencedColumnName = "id", insertable = false, updatable = false)
+    private RolModel userRol;
 
     public Long getId() {
         return id;
@@ -39,10 +49,18 @@ public class UsuarioModel {
     }
 
     public Integer getIdRol() {
-        return id_rol;
+        return idRol;
     }
 
     public void setIdRol(Integer idRol) {
-        this.id_rol = idRol;
+        this.idRol = idRol;
+    }
+
+    public RolModel getUserRol() {
+        return this.userRol;
+    }
+
+    public void setUserRol(RolModel userRol) {
+        this.userRol = userRol;
     }
 }

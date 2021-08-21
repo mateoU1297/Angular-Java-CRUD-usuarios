@@ -12,10 +12,19 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
     public Iterable<UsuarioModel> getUsuarios(){
-        return usuarioRepository.findAll();
+        return this.usuarioRepository.findAll();
     }
 
     public UsuarioModel addUsuario(UsuarioModel usuario){
-        return usuarioRepository.save(usuario);
+        return this.usuarioRepository.save(usuario);
+    }
+
+    public boolean deleteUsuario(Long id) {
+        try{
+            this.usuarioRepository.deleteById(id);
+            return true;
+        }catch(Exception err){
+            return false;
+        }
     }
 }
