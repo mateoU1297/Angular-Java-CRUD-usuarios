@@ -16,16 +16,13 @@ export class UsuarioComponent implements OnInit {
   showForm : boolean = false;
   showTable: boolean = true;
   accion   : string = '';
+  usuario  : Usuario;
 
   constructor(
     private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarioService.getUsuarios().subscribe(
-      usuarios => {
-        this.usuarios = usuarios;
-      }
-    );
+    this.getUsuarios();
   }
 
   limpiarBuscador(){
@@ -43,6 +40,27 @@ export class UsuarioComponent implements OnInit {
     this.accion    = 'Crear';
   }
 
+  editar(usuario: Usuario){
+    this.showTable = false;
+    this.showForm  = true;
+    this.accion    = 'Editar';
+    this.usuario   = usuario;
+  }
+
+  cerrarFormulario(){
+    this.showTable = true;
+    this.showForm  = false;
+    this.getUsuarios();
+  }
+
+  getUsuarios(){
+    this.usuarioService.getUsuarios().subscribe(
+      usuarios => {
+        this.usuarios = usuarios;
+      }
+    );
+  }
+
   eliminar(id: number){
     Swal.fire({
       title: 'Eliminar',
@@ -55,12 +73,7 @@ export class UsuarioComponent implements OnInit {
       if (result.isConfirmed) {
         this.usuarioService.delete(id).subscribe(
           data => {
-            this.usuarioService.getUsuarios().subscribe(
-              usuarios => {
-                this.usuarios = usuarios;
-              }
-            );
-            
+            this.getUsuarios();
             Swal.fire(
               'Eliminado!',
               'Usuario eliminado con éxito.',

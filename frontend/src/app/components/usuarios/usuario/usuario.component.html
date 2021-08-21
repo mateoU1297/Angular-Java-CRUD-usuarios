@@ -2,12 +2,9 @@
   <app-form
     *ngIf="showForm"
     [accion]="accion"
+    [usuario]="usuario"
+    (onCancelar)="cerrarFormulario()"
   ></app-form>
-  <!-- <app-usuario-formulario 
-    *ngIf="showForm"
-    [id]="id"
-    [accion]="accion"
-    ></app-usuario-formulario> -->
   <div *ngIf="showTable" class="card card-primary card-outline">
     <div class="card-header">
       <div class="row">
@@ -58,7 +55,7 @@
         <tbody>
           <tr align="center" *ngFor="let usuario of usuarios">
             <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.nombre | titlecase }}</td>
             <td>{{ usuario.userRol.nombre }}</td>
             <td>
               <em
@@ -71,7 +68,7 @@
               ></em>
             </td>
             <td>
-              <em class="fas fa-pencil-alt text-primary"></em>
+              <em class="fas fa-pencil-alt text-primary" (click)="editar(usuario)"></em>
               <em> &nbsp; </em>
               <em class="fas fa-trash text-danger" (click)="eliminar(usuario.id)"></em>
             </td>
