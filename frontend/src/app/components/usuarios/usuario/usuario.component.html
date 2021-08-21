@@ -1,17 +1,21 @@
 <div class="container mt-4">
+  <app-form
+    *ngIf="showForm"
+    [accion]="accion"
+  ></app-form>
   <!-- <app-usuario-formulario 
     *ngIf="showForm"
     [id]="id"
     [accion]="accion"
     ></app-usuario-formulario> -->
-  <div class="card card-primary card-outline">
+  <div *ngIf="showTable" class="card card-primary card-outline">
     <div class="card-header">
       <div class="row">
         <div class="col-6">
           <button
-            type="button"
-            class="btn btn-primary"
-            routerLink="/agregar-usuario"
+            type    = "button"
+            class   = "btn btn-primary"
+            (click) = "crear()"
           >
             <em class="fa fa-plus"></em> Crear
           </button>
@@ -19,6 +23,25 @@
       </div>
     </div>
     <div class="card-body">
+      <form class="form-inline">
+        <input
+          type        = "text"
+          name        = "texto_busqueda"
+          class       = "form-control"
+          id          = "texto_busqueda"
+          placeholder = "Nombre"
+          maxlength   = "250"
+          [(ngModel)] = "buscador"
+        />
+        <em> &nbsp; </em>
+        <button type="button" class="btn btn-primary">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+        <em> &nbsp; </em>
+        <button type="button" class="btn btn-secondary" (click)="limpiarBuscador()">
+          <i class="fas fa-eraser" aria-hidden="true"></i>
+        </button>
+      </form>
       <table
         id="dtUsuarios"
         class="mt-2 table table-bordered table-striped table-responsive"
@@ -34,12 +57,18 @@
         </thead>
         <tbody>
           <tr align="center" *ngFor="let usuario of usuarios">
-            <td>{{usuario.id}}</td>
-            <td>{{usuario.nombre}}</td>
-            <td>{{usuario.userRol.nombre}}</td>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.userRol.nombre }}</td>
             <td>
-              <em *ngIf="usuario.activo" class="fas fa-circle fa-lg text-success"></em>
-              <em *ngIf="!usuario.activo" class="far fa-circle fa-lg text-danger"></em>
+              <em
+                *ngIf="usuario.activo"
+                class="fas fa-circle fa-lg text-success"
+              ></em>
+              <em
+                *ngIf="!usuario.activo"
+                class="far fa-circle fa-lg text-danger"
+              ></em>
             </td>
             <td>
               <em class="fas fa-pencil-alt text-primary"></em>

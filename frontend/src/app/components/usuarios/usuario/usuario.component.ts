@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RolService } from 'src/app/services/rol.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { Usuario } from '../../../interfaces/usuario';
 
@@ -12,11 +11,14 @@ import Swal from 'sweetalert2';
 })
 export class UsuarioComponent implements OnInit {
 
-  usuarios: Usuario[] = [];
+  usuarios : Usuario[] = [];
+  buscador : string = '';
+  showForm : boolean = false;
+  showTable: boolean = true;
+  accion   : string = '';
 
   constructor(
-    private usuarioService: UsuarioService,
-    private rolService: RolService) { }
+    private usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     this.usuarioService.getUsuarios().subscribe(
@@ -24,6 +26,21 @@ export class UsuarioComponent implements OnInit {
         this.usuarios = usuarios;
       }
     );
+  }
+
+  limpiarBuscador(){
+    this.buscador = '';
+    this.usuarioService.getUsuarios().subscribe(
+      usuarios => {
+        this.usuarios = usuarios;
+      }
+    );
+  }
+
+  crear(){
+    this.showTable = false;
+    this.showForm  = true;
+    this.accion    = 'Crear';
   }
 
   eliminar(id: number){

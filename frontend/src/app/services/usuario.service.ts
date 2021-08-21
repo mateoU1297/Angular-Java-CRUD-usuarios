@@ -19,4 +19,8 @@ export class UsuarioService {
   delete(id: number): Observable<any> {
     return this.http.delete<any>(`${this.myAppUrl}/delete/${id}`);
   }
+
+  create(usuario: Usuario): Observable<any> {
+    return this.http.post<any>(`${this.myAppUrl}/create`, usuario);
+  }
 }

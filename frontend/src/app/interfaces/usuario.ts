@@ -1,8 +1,8 @@
 import { Rol } from './rol';
 export interface Usuario {
-    id: number;
+    id?: number;
     nombre: string;
     activo: boolean;
     idRol: number;
-    userRol: Rol;
+    userRol?: Rol;
 }
