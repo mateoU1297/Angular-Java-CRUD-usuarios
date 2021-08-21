@@ -34,6 +34,16 @@ export class UsuarioComponent implements OnInit {
     );
   }
 
+  buscarPorNombre(){
+    if(this.buscador != ''){
+      this.usuarioService.getUsuariosByName(this.buscador.toLowerCase()).subscribe(
+        usuarios => {
+          this.usuarios = usuarios;
+        }
+      );
+    }
+  }
+
   crear(){
     this.showTable = false;
     this.showForm  = true;
@@ -64,7 +74,7 @@ export class UsuarioComponent implements OnInit {
   eliminar(id: number){
     Swal.fire({
       title: 'Eliminar',
-      text: 'Esta seguro que desea eliminar el usuario',
+      text: '¿Esta seguro que desea eliminar el usuario?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Si!',

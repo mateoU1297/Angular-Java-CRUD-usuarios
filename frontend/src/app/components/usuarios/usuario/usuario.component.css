@@ -3,3 +3,7 @@
     width: auto;
     vertical-align: middle;
 }
+
+.pointer {
+    cursor: pointer;
+}

@@ -23,4 +23,8 @@ export class UsuarioService {
   create(usuario: Usuario): Observable<any> {
     return this.http.post<any>(`${this.myAppUrl}/create`, usuario);
   }
+
+  getUsuariosByName(nombre: string): Observable<Usuario[]> {
+    return this.http.get<Usuario[]>(`${this.myAppUrl}/find-by-name/${nombre}`);
+  }
 }
