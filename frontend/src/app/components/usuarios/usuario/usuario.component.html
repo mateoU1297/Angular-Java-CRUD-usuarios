@@ -13,33 +13,39 @@
             class="btn btn-primary"
             routerLink="/agregar-usuario"
           >
-            <i class="fa fa-plus"></i> Crear
+            <em class="fa fa-plus"></em> Crear
           </button>
         </div>
       </div>
     </div>
     <div class="card-body">
       <table
-        id="dtProductos"
+        id="dtUsuarios"
         class="mt-2 table table-bordered table-striped table-responsive"
       >
         <thead>
-          <tr>
-            <th>Opciones</th>
+          <tr align="center">
+            <th>ID</th>
             <th>Nombre</th>
             <th>Rol</th>
             <th>Estado</th>
+            <th>Opciones</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr align="center" *ngFor="let usuario of usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.idRol}}</td>
             <td>
-              <i class="fas fa-pencil-alt text-primary"></i>
-              <i class="fas fa-trash text-danger"></i>
+              <em *ngIf="usuario.activo" class="fas fa-circle fa-lg text-success"></em>
+              <em *ngIf="!usuario.activo" class="far fa-circle fa-lg text-danger"></em>
             </td>
-            <td>Prueba</td>
-            <td>Prueba</td>
-            <td>Prueba</td>
+            <td>
+              <em class="fas fa-pencil-alt text-primary"></em>
+              <em> &nbsp; </em>
+              <em class="fas fa-trash text-danger"></em>
+            </td>
           </tr>
         </tbody>
       </table>
