@@ -25,7 +25,7 @@ public class UsuarioController {
         return this.usuarioService.getUsuarios();
     }
 
-    @PostMapping()
+    @PostMapping("create")
     public UsuarioModel addUsuario(@RequestBody UsuarioModel usuario){
         return this.usuarioService.addUsuario(usuario);
     }
@@ -35,8 +35,8 @@ public class UsuarioController {
         return this.usuarioService.deleteUsuario(id);
     }
 
-    // @GetMapping( path = "find-by-name/{nombre}")
-    // public Iterable<UsuarioModel> findByName(@PathVariable("nombre") String nombre){
-    //     return this.usuarioService.findByName(nombre);
-    // }
+    @GetMapping( path = "find-by-name/{nombre}")
+    public Iterable<UsuarioModel> findByName(@PathVariable("nombre") String nombre){
+        return this.usuarioService.findByName(nombre);
+    }
 }

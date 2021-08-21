@@ -28,7 +28,7 @@ public class UsuarioService {
         }
     }
 
-    // public Iterable<UsuarioModel> findByName(String nombre){
-    //     return this.usuarioRepository.findByName(nombre);
-    // }
+    public Iterable<UsuarioModel> findByName(String nombre){
+        return this.usuarioRepository.findByName(nombre);
+    }
 }
